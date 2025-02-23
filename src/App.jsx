@@ -1,10 +1,10 @@
 import './App.css';
-import { Navbar } from './components';
+import DashboardLayoutBasic from './components/Navbar';
 
 const App = () => {
   return (
     <div className='w-full overflow-hidden scroll-smooth'>
-      <Navbar />
+      <DashboardLayoutBasic />
       <Outlet />
     </div>
   );
