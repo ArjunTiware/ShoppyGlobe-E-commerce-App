@@ -1,4 +1,3 @@
-import './App.css';
 import DashboardLayoutBasic from './components/Navbar';
 
 const App = () => {
