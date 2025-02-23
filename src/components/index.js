@@ -4,6 +4,8 @@ import Hero from './Hero';
 import Card from './Card';
 import Contact from './Contact';
 import Footer from './Footer';
+import ProductDetails from './ProductDetails';
+import ErrorPage from './ErrorPage';
 
 export {
     Header,
@@ -11,5 +13,7 @@ export {
     Hero,
     Card,
     Contact,
-    Footer
+    Footer,
+    ProductDetails,
+    ErrorPage
 }
