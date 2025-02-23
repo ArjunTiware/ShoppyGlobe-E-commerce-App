@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div className='w-full overflow-hidden scroll-smooth'>
       <DashboardLayoutBasic />
-      <Outlet />
+      {/* <Outlet /> */}
     </div>
   );
 }
