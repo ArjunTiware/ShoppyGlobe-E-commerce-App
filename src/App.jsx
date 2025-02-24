@@ -1,11 +1,12 @@
-import DashboardLayoutBasic from './components/Navbar';
+import store from "./Store/Appstore";
+import { Provider } from "react-redux";
+import UserDashboard from "./UserDashboard";
 
-const App = () => {
+function App() {
   return (
-    <div className='w-full overflow-hidden scroll-smooth'>
-      <DashboardLayoutBasic />
-      {/* <Outlet /> */}
-    </div>
+    <Provider store={store}>
+      <UserDashboard />
+    </Provider>
   );
 }
 
