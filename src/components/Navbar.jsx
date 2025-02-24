@@ -14,8 +14,8 @@ const Navbar = () => {
     naviagte(`/search/${value}`);
     setValue("");
   }
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const user = useSelector((state) => state.auth.user);
+  // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  // const user = useSelector((state) => state.auth.user);
   let cart = useSelector((state) => state.cart.item);
   let stock = cart.reduce((acc, curr) => acc + curr.quantity, 0);
 
@@ -60,20 +60,20 @@ const Navbar = () => {
           <Link to={"/new/product"}>
             <li className="font-semibold  text-xl hover:text-red-500">
               {" "}
-              <i>{isLoggedIn ? "add new product" : ""}</i>
+              {/* <i>{isLoggedIn ? "add new product" : ""}</i> */}
             </li>
           </Link>
 
-          <Link to={"/addresses"}>
+          {/* <Link to={"/addresses"}>
             <li className="font-semibold  text-xl hover:text-red-500">
               {" "}
               <i>My address</i>
             </li>
-          </Link>
+          </Link> */}
 
           <li className="font-semibold  text-xl hover:text-red-500">
             {" "}
-            <i>{user && user.username}</i>
+            {/* <i>{user && user.username}</i> */}
           </li>
         </ul>
 

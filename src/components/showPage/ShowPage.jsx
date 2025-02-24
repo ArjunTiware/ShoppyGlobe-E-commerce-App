@@ -12,7 +12,7 @@ const ShowPage = ({ id }) => {
   console.log(id);
 
   let { data, loading, error } = UseFetchData(
-    `http://localhost:8000/api/product/${id}`
+    `http://localhost:5173/api/product/${id}`
   );
   useEffect(() => {
     if (data && data.data) {

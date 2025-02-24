@@ -21,7 +21,7 @@ export const AllProducts = () => {
     if (sortOption === "lowToHigh") {
       return "https://dummyjson.com/products?sortBy=price&order=asc";
     }
-    return "http://localhost:8000/api/product";
+    return "http://localhost:5173/api/product";
   }, [sortOption]);
 
   let { data, loading, error } = UseFetchData(url);

@@ -14,10 +14,11 @@ const Products = lazy(() => import("./Pages/Products"));
 // const ScrollToTop = lazy(() => import("./Components/ScrollToTop"));
 const SearchPage = lazy(() => import("./Pages/SearchPage"));
 const Error = lazy(() => import("./Pages/Error"));
+import ScrollToTop from "./components/ScrollToTop"; 
 
 const UserDashboard = () => {
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  console.log(isLoggedIn);
+  // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  // console.log(isLoggedIn);
 
   return (
     <Router>
@@ -32,7 +33,7 @@ const UserDashboard = () => {
           path="/"
           element={
             <Suspense fallback={<div>Loading HomePage...</div>}>
-              {isLoggedIn ? <HomePage /> : <SignUp />}
+              {/* {isLoggedIn ? <HomePage /> : <SignUp />} */}
             </Suspense>
           }
         />
@@ -87,14 +88,14 @@ const UserDashboard = () => {
           }
         />
 
-        <Route
+        {/* <Route
           path="/edit/:id"
           element={
             <Suspense fallback={<div>Loading Error...</div>}>
               <EditAddress />
             </Suspense>
           }
-        />
+        /> */}
 
         <Route
           path="*"

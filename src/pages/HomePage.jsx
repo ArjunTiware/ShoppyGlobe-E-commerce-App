@@ -4,7 +4,7 @@ import GridCategory from "../Components/HomePage/GridCategory";
 import ImageCursol from "../Components/HomePage/ImageCursol";
 import axios from "axios";
 import Headline from "../Components/HomePage/Headline";
-import Card from "../Components/Card/Card";
+import Card from "../components/Card/Card";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +12,7 @@ const HomePage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios("http://localhost:8000/api/category")
+    axios("http://localhost:5173/api/category")
       .then((respone) => {
         if (respone && respone.data) {
           SetCategories(respone.data.data);
@@ -22,7 +22,7 @@ const HomePage = () => {
         setError(err);
       });
 
-    axios("http://localhost:8000/api/product")
+    axios("http://localhost:5173/api/product")
       .then((respone) => {
         if (respone && respone.data) {
           setProducts(respone.data.data);

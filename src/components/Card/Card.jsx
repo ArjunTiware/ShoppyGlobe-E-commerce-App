@@ -13,7 +13,7 @@ const Card = ({ item }) => {
     console.log(document.cookie);
     if (isLoggedIn) {
       axios
-        .post("http://localhost:8000/api/cart", item, { withCredentials: true })
+        .post("http://localhost:5173/api/cart", item, { withCredentials: true })
         .then((res) => {
           console.log(res);
         });
