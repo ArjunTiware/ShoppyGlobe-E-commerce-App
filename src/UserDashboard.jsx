@@ -1,11 +1,11 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import AddressForm from "./Pages/AddressForm";
+// import AddressForm from "./Pages/AddressForm";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import NewProduct from "./Pages/NewProduct";
+// import NewProduct from "./Pages/NewProduct";
 // Lazy load the components
-const Navbar = lazy(() => import("./Components/Header/Navbar"));
+const Navbar = lazy(() => import("./Components/Navbar"));
 const HomePage = lazy(() => import("./Pages/HomePage"));
 const Cart = lazy(() => import("./Pages/Cart"));
 const ProductDetails = lazy(() => import("./Pages/ProductDetails"));
