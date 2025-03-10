@@ -1,66 +1,98 @@
-import { useState } from "react";
-import { close, logo, menu } from "../assets";
-import { navLinks } from "../constants";
+import React, { useState } from "react";
+import { use } from "react";
+// import img from "../assets/Black and White Star Y2k Streetwear Logo.png"
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Header = () => {
-  const [toggle, settoggle] = useState(false);
+const Navbar = () => {
+  let naviagte = useNavigate();
+
+  const [value, setValue] = useState("");
+
+  function handleClick() {
+    naviagte(`/search/${value}`);
+    setValue("");
+  }
+  let cart = useSelector((state) => state.cart.item);
+  let stock = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+
   return (
-    <nav
-      id="navbar"
-      className="w-full flex justify-between items-center navbar"
-    >
-      <img
-        src={logo}
-        alt="logo"
-        className="w[100px] h-[100px] animate__animated animate__fadeInUp"
-      />
-
-      <ul className="list-none mdII:flex flex justify-center items-center flex-1 animate__animated animate__fadeInUp">
-        {navLinks.map((nav, index) => (
-          <li
-            key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-lg ${
-              index === navLinks.length - 1 ? "mr-0" : "mr-10"
-            } text-gray-600 hover:text-black`}
-          >
-            <a href={`#${nav.id}`}>{nav.title}</a>
-          </li>
-        ))}
-      </ul>
-
-      <div className="mdII:hidden flex flex-1 justify-end items-center">
-        <img
-          src={toggle ? close : menu}
-          alt="menu"
-          className="w-[50px] h-[50px] cursor-pointer object-contain"
-          onClick={() => settoggle((prev) => !prev)}
-        />
-        <div
-          className={`${
-            toggle ? "flex" : "hidden"
-          } p-6 absolute top-[4.35rem] right-8 mx-4 my-2 px-5 bg-gray-800 rounded-xl sidebar`}
-        >
-          <ul className="list-none flex flex-col z-10 w-full justify-center items-center flex-1">
-            {navLinks.map((nav, index) => (
-              <li
-                key={nav.id}
-                className={`font-poppins font-normal cursor-pointer text-lg ${
-                  index === navLinks.length - 1 ? "mr-0" : "mb-4"
-                } text-gray-400 hover:text-white`}
-              >
-                <a href={`#${nav.id}`}>{nav.title}</a>
-              </li>
-            ))}
-          </ul>
+    <>
+      <nav className="bg-white flex z-50 justify-between border-b-2 fixed p-3 w-full">
+        {/* nav logo */}
+        <div className="text-white">
+          <span className="font-bold text-orange-400">
+            CART <sub className="font-semibold text-green-400">FLY</sub>{" "}
+            <i className="fa-brands text-white fa-fly"></i>
+          </span>
         </div>
-      </div>
-      <div className="cart_button pr-2 mr-2">
-          <button className=" font-semibold text-2xl">
-            <i class="fa-solid fa-cart-shopping fa-bounce"></i>
-          </button>
-      </div>
-    </nav>
+
+        {/* Nav Search Bar */}
+
+        <div className="flex ">
+          <input
+            type="text"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder="search for products"
+            className="border-1 w-60 rounded-l-md bg-gray-200 p-1 outline-none"
+          />
+          <div
+            onClick={handleClick}
+            className="p-1 inline-block hover:bg-gray-300 rounded-r-md bg-gray-200"
+          >
+            <i className="fa-solid text-xl text-red-500 fa-magnifying-glass "></i>
+          </div>
+        </div>
+
+        {/* nav link list */}
+        <ul className="flex text-black  ml-10 gap-3">
+          <Link to={"/"}>
+            <li className="font-semibold  text-xl hover:text-red-500">
+              {" "}
+              <i>Home</i>
+            </li>
+          </Link>
+
+          <Link to={"/new/product"}>
+            <li className="font-semibold  text-xl hover:text-red-500">
+              {" "}
+              <i>{isLoggedIn ? "add new product" : ""}</i>
+            </li>
+          </Link>
+
+          <Link to={"/addresses"}>
+            <li className="font-semibold  text-xl hover:text-red-500">
+              {" "}
+              <i>My address</i>
+            </li>
+          </Link>
+
+          <li className="font-semibold  text-xl hover:text-red-500">
+            {" "}
+            <i>{user && user.username}</i>
+          </li>
+        </ul>
+
+        {/* item cart */}
+
+        <Link to={"/cart"}>
+          <div className="  mr-5">
+            <span
+              className={`bg-orange-500 px-1 ${
+                stock ? "inline" : "hidden"
+              } text-sm rounded-full absolute top-1 right-7`}
+            >
+              {stock}
+            </span>
+            <i className="fa-solid fa-xl  fa-cart-shopping"></i>
+          </div>
+        </Link>
+      </nav>
+      <br /> <br /> <br />
+    </>
   );
 };
 
-export default Header;
+export default Navbar;
