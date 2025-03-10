@@ -1,11 +1,13 @@
-import { Home, Header, ProductList} from "./components/index";
+import { Home, Header, ProductList } from "./components/index";
 
 function App() {
   return (
     <>
-      <Header />
-      <Home />
-      <ProductList />
+      <div className="App text-red-400">
+        <Header />
+        <Home />
+        <ProductList />
+      </div>
     </>
   );
 }
