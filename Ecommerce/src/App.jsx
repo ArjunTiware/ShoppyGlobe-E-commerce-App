@@ -1,4 +1,5 @@
 import { Home, Header, ProductList } from "./components/index";
+import styles from "./style";
 
 function App() {
   return (

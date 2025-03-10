@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { close, menu } from "../assets";
+import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
         className="w[100px] h-[100px] animate__animated animate__fadeInUp"
       />
 
-      <ul className="list-none mdII:flex hidden justify-center items-center flex-1 animate__animated animate__fadeInUp">
+      <ul className="list-none mdII:flex flex justify-center items-center flex-1 animate__animated animate__fadeInUp">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
@@ -54,12 +54,10 @@ const Header = () => {
           </ul>
         </div>
       </div>
-      <div className="resume_button pr-2 mr-2">
-        <a href="https://drive.google.com/file/d/1YmEveiCLduLqsaczIFs4faGGeiDWX1gd/view?usp=sharing" target="_blank">
-          <button className=" font-semibold text-white ease-in-out duration-300 text-lg bg-slate-900 hover:bg-slate-600 px-4  py-1 rounded-full">
-            RESUME <i class="fa-solid fa-download"></i>
+      <div className="cart_button pr-2 mr-2">
+          <button className=" font-semibold text-2xl">
+            <i class="fa-solid fa-cart-shopping fa-bounce"></i>
           </button>
-        </a>
       </div>
     </nav>
   );

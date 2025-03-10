@@ -4,19 +4,7 @@ export const navLinks = [
         title: "HOME",
     },
     {
-        id: "about",
-        title: "ABOUT",
-    },
-    {
-        id: "mySkills",
-        title: "SKILL & EDUCATION",
-    },
-    {
-        id: "projects",
-        title: "PROJECTS",
-    },
-    {
-        id: "contact",
-        title: "CONTACT",
-    },
+        id: "productlist",
+        title: "PRODUCTS",
+    }
 ];
