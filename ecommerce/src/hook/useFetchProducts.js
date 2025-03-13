@@ -1,28 +1,25 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const useFetchProducts = () => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+function useFetchProducts() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch('https://dummyjson.com/products');
-                if (!response.ok) throw new Error('Failed to fetch products');
-                const data = await response.json();
-                setProducts(data);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+  useEffect(() => {
+    axios
+      .get('https://dummyjson.com/products')
+      .then((response) => {
+        setProducts(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
 
-        fetchProducts();
-    }, []);
-
-    return { products, loading, error };
-};
+  return { products, loading, error };
+}
 
 export default useFetchProducts;
