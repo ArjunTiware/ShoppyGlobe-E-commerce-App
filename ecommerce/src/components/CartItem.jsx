@@ -1,11 +1,8 @@
 import React from "react";
-// import Image from "next/image";
-import { Image } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { updateCartItemQuantity, removeFromCart } from "../redux/cartSlice";
 import { Trash, Plus, Minus } from "lucide-react";
 import { Button } from "../components/ui/button";
-
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -35,11 +32,10 @@ function CartItem({ item }) {
       <div className="grid grid-cols-12 gap-4 items-center">
         <div className="col-span-6 flex items-center">
           <div className="w-16 h-16 flex-shrink-0 mr-4 bg-gray-100 rounded overflow-hidden relative">
-            <Image
+            <img
               src={item.image || "/placeholder.svg"}
               alt={item.title}
-              fill
-              className="object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
           <div>
@@ -59,7 +55,7 @@ function CartItem({ item }) {
               className="h-8 w-8 p-0"
               onClick={handleDecreaseQuantity}
             >
-              <Minus className="h-3 w-3" />
+              <Minus className="h-3 w-3" fill="currentColor" />
             </Button>
             <span className="w-8 text-center">{item.quantity}</span>
             <Button
@@ -68,7 +64,7 @@ function CartItem({ item }) {
               className="h-8 w-8 p-0"
               onClick={handleIncreaseQuantity}
             >
-              <Plus className="h-3 w-3" />
+              <Plus className="h-3 w-3" fill="currentColor" />
             </Button>
           </div>
         </div>
@@ -86,7 +82,7 @@ function CartItem({ item }) {
             className="text-red-500 hover:text-red-700 hover:bg-red-50"
             onClick={handleRemoveItem}
           >
-            <Trash className="h-4 w-4" />
+            <Trash className="h-4 w-4" fill="currentColor" />
           </Button>
         </div>
       </div>
