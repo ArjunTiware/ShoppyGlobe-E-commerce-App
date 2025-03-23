@@ -1,4 +1,5 @@
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
+import { Inter } from "lucide-react";
 import "./globals.css";
 import Header from "../components/Header";
 import { Providers } from "../redux/providers";

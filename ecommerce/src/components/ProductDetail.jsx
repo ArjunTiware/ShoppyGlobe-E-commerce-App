@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import Link from "next/link";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import { Button } from "../components/ui/button";

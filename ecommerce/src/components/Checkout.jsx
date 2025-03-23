@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { selectCartItems, selectCartTotal } from "@/redux/selectors";
-import { clearCart } from "@/redux/cartSlice";
+import { selectCartItems, selectCartTotal } from "../redux/selectors";
+import { clearCart } from "../redux/cartSlice";
 import { Button } from "../components/ui/button";
 import { Check } from "lucide-react";
 

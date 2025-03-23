@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "../components/ui/button"
-import { Home } from "lucide-react"
+import { Button } from "../components/ui/button";
+import { Home } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function NotFound() {
