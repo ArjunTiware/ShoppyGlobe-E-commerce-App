@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const useFetchProduct = () => {
+const useFetchProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -8,26 +9,18 @@ const useFetchProduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        setLoading(true);
-        const response = await fetch("https://dummyjson.com/products");
-
-        if (!response.ok) {
-          throw new Error(`Failed to fetch products: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setProducts(data.products);
-        setLoading(false);
+        const response = await axios.get('https://dummyjson.com/products');
+        setProducts(response.data.products);
       } catch (err) {
-        setError(err.message);
+        setError('Failed to fetch products');
+      } finally {
         setLoading(false);
       }
     };
-
     fetchProducts();
   }, []);
 
   return { products, loading, error };
-}
+};
 
-export default useFetchProduct;
+export default useFetchProducts;

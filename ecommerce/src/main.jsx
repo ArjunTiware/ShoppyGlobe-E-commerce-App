@@ -1,12 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import { configureStore } from '@reduxjs/toolkit';
 import App from './App';
+import cartReducer from './features/cartSlice';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const store = configureStore({
+  reducer: {
+    cart: cartReducer,
+  },
+});
+
+ReactDOM.render(
   <Provider store={store}>
     <App />
-  </Provider>
+  </Provider>,
+  document.getElementById('root')
 );
