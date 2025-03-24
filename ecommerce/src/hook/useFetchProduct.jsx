@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useProductList = () => {
+const useFetchProduct = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -30,4 +30,4 @@ const useProductList = () => {
   return { products, loading, error };
 }
 
-export default useProductList;
+export default useFetchProduct;
