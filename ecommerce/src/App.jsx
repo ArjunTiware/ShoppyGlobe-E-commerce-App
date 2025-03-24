@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 
 const ProductList = lazy(() => import('./components/ProductList'));
@@ -12,12 +12,12 @@ function App() {
     <Router>
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route exact path="/" component={ProductList} />
-          <Route path="/product/:id" component={ProductDetail} />
-          <Route path="/cart" component={Cart} />
-          <Route component={NotFound} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </Suspense>
     </Router>
   );
