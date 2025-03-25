@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import App from './App';
 import cartReducer from './redux/cartSlice';
+import './index.css';
 
 const store = configureStore({
   reducer: {

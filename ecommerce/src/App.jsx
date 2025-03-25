@@ -11,11 +11,12 @@ function App() {
   return (
     <Router>
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div className="text-center p-4">Loading...</div>}>
         <Routes>
           <Route path="/" element={<ProductList />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Cart />} /> {/* Placeholder for Checkout */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
