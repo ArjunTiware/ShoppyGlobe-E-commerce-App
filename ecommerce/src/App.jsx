@@ -12,6 +12,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <ImageCursol />
       <Suspense fallback={<div className="text-center p-4">Loading...</div>}>
         <Routes>
           <Route path="/" element={<ProductList />} />
