@@ -15,7 +15,7 @@ ShoppyGlove-E-commerce-App is a fully responsive and interactive e-commerce fron
 
 ## Live Demo
 
-You can check out the live demo of the project [here](https://github.com/ArjunTiware/ShoppyGlobe-E-commerce-App.git).
+You can check out the live demo of the project [here](https://shoppyglobe-e-commerce.netlify.app/).
 
 ## Tech Stack
 
