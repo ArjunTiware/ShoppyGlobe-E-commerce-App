@@ -1,9 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { removeItem } from '../redux/cartSlice';
 
-function CartItem({ item, quantity, onIncrease, onDecrease }) {
-  const dispatch = useDispatch();
+function CartItem({ item, onIncrease, onDecrease, onRemove }) {
+  // Debugging: Log item to verify quantity
+  console.log('Cart Item:', item);
 
   return (
     <tr className="border-t">
@@ -11,7 +10,7 @@ function CartItem({ item, quantity, onIncrease, onDecrease }) {
         <img src={item.thumbnail} alt={item.title} className="w-12 h-12 object-contain" />
         <span className="text-gray-800">{item.title}</span>
       </td>
-      <td className="p-2 text-gray-800">${item.price}</td>
+      <td className="p-2 text-gray-800">${item.price.toFixed(2)}</td>
       <td className="p-2">
         <div className="flex items-center space-x-2">
           <button
@@ -20,7 +19,7 @@ function CartItem({ item, quantity, onIncrease, onDecrease }) {
           >
             -
           </button>
-          <span>{quantity}</span>
+          <span>{item.quantity}</span>
           <button
             onClick={onIncrease}
             className="px-2 py-1 border border-gray-300 rounded-lg hover:bg-gray-100"
@@ -29,12 +28,9 @@ function CartItem({ item, quantity, onIncrease, onDecrease }) {
           </button>
         </div>
       </td>
-      <td className="p-2 text-gray-800">${(item.price * quantity).toFixed(2)}</td>
+      <td className="p-2 text-gray-800">${(item.price * item.quantity).toFixed(2)}</td>
       <td className="p-2">
-        <button
-          onClick={() => dispatch(removeItem(item.id))}
-          className="text-red-500 hover:text-red-700"
-        >
+        <button onClick={onRemove} className="text-red-500 hover:text-red-700">
           <svg
             className="w-5 h-5"
             fill="none"

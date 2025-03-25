@@ -1,13 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ProductItem({ product, onAddToCart }) {
   return (
     <div className="bg-white shadow-md rounded-lg p-4 flex flex-col items-center">
-      <img
-        src={product.thumbnail}
-        alt={product.title}
-        className="w-32 h-32 object-contain mb-4"
-      />
+      <Link to={`/product/${product.id}`}>
+        <img
+          src={product.thumbnail}
+          alt={product.title}
+          className="w-32 h-32 object-contain mb-4"
+        />
+      </Link>
       <h3 className="text-lg font-semibold text-gray-800 text-center truncate w-full">
         {product.title}
       </h3>

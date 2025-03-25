@@ -2,29 +2,32 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem';
-import { addItem, removeItem } from '../redux/cartSlice';
+import { increaseQuantity, decreaseQuantity, removeItem } from '../redux/cartSlice';
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
-  const handleIncreaseQuantity = (item) => {
-    dispatch(addItem(item));
+  const handleIncreaseQuantity = (itemId) => {
+    dispatch(increaseQuantity(itemId));
   };
 
-  const handleDecreaseQuantity = (item) => {
-    const itemInCart = cartItems.filter((cartItem) => cartItem.id === item.id);
-    if (itemInCart.length === 1) {
-      dispatch(removeItem(item.id));
-    } else {
-      dispatch(removeItem(item.id));
-    }
+  const handleDecreaseQuantity = (itemId) => {
+    dispatch(decreaseQuantity(itemId));
   };
 
+  const handleRemoveItem = (itemId) => {
+    dispatch(removeItem(itemId));
+  };
+
+  // Calculate subtotal
   const subtotal = cartItems.reduce((total, item) => {
-    const itemCount = cartItems.filter((cartItem) => cartItem.id === item.id).length;
-    return total + item.price * itemCount;
+    return total + (item.price * (item.quantity || 1));
   }, 0);
+
+  // Debugging: Log cartItems to verify state updates
+  console.log('Cart Items:', cartItems);
+  console.log('Subtotal:', subtotal);
 
   return (
     <div className="p-6">
@@ -45,19 +48,15 @@ function Cart() {
                 </tr>
               </thead>
               <tbody>
-                {[...new Set(cartItems.map(item => item.id))].map((id) => {
-                  const item = cartItems.find((cartItem) => cartItem.id === id);
-                  const quantity = cartItems.filter((cartItem) => cartItem.id === id).length;
-                  return (
-                    <CartItem
-                      key={item.id}
-                      item={item}
-                      quantity={quantity}
-                      onIncrease={() => handleIncreaseQuantity(item)}
-                      onDecrease={() => handleDecreaseQuantity(item)}
-                    />
-                  );
-                })}
+                {cartItems.map((item) => (
+                  <CartItem
+                    key={item.id}
+                    item={item}
+                    onIncrease={() => handleIncreaseQuantity(item.id)}
+                    onDecrease={() => handleDecreaseQuantity(item.id)}
+                    onRemove={() => handleRemoveItem(item.id)}
+                  />
+                ))}
               </tbody>
             </table>
           </div>
@@ -69,15 +68,23 @@ function Cart() {
             <div className="space-x-4">
               <Link
                 to="/"
-                className="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center"
               >
                 Continue Shopping
-              </Link>
-              <Link
-                to="/checkout"
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-              >
-                Proceed to Checkout
+                <svg
+                  className="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
               </Link>
             </div>
           </div>
