@@ -1,4 +1,4 @@
-# Cartfly - E-commerce Frontend
+# ShoppyGlove - E-commerce Frontend
 
 [![Cartfly](https://img.shields.io/badge/Github-Ecommerce-00BFFF)](https://github.com/ArjunTiware/ShoppyGlobe-E-commerce-App.git)
 
